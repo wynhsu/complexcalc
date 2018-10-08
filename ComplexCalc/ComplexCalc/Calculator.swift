@@ -99,16 +99,6 @@ class Calculator {
     }
     
     func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
-        var result: Int = 0
-        var index: Int = beg
-        while index < args.count - 1 {
-            if index == beg {
-                result = op(args[index], args[index+1])
-            } else {
-                result = op(result, args[index+1])
-            }
-            index += 1
-        }
-        return result
+        return args.reduce(beg, {op($0, $1)} )
     }
 }
